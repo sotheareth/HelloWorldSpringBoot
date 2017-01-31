@@ -20,8 +20,8 @@ repositories {
     jcenter()
 }
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 war.archiveName "HelloWorld.war"
 
@@ -32,5 +32,9 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-web")
 	compile('org.slf4j:slf4j-api:1.7.21')
 	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+	compile("org.springframework.boot:spring-boot-starter-actuator")
+	compile("org.springframework.boot:spring-boot-devtools")
 
 }
