@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+    <span th:text="'Instance 1'" style="color: blue; font-size: xx-small;">
+        Instance 1
+    </span>
+    
+    <div th:if="${#ctx.httpSession.getAttribute('Books') != null}">
+	  <p>Session Id: <span th:text="${# ctx.httpSession.id}"></span>.</p>
+	  <p>Is it New Session: <span th:text="${# ctx.httpSession.isNew()}"></span>.</p>
+	  <p>Session Creation Date: <span th:text="${# ctx.httpSession.creationTime}"></span>.</p>
+	  <p>Session Access Date : <span th:text="${# ctx.httpSession.lastAccessedTime}"></span>.</p>
+	</div>
+	
+	<b>Cart List </b>
+    
+    <div th:if="${#ctx.httpSession.getAttribute('Books') != null}">
+      <ul th:each="book : ${#ctx.httpSession.getAttribute('Books')}">
+        <li th:text="${book}"></li>
+      </ul>
+    </div>
+    
+    <form action="greeting" method="post">
+        Book Name <input name="bookName" type="text"></input>
+        <input type="submit" value="Add to Cart"></input>
+    </form>
+
+</body>
+</html>

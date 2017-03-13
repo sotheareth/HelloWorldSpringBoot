@@ -26,15 +26,27 @@ targetCompatibility = 1.8
 war.archiveName "HelloWorld.war"
 
 
+//this is for logback library
+//1. exclude commons-logging
+configurations.all {
+   exclude group: "commons-logging", module: "commons-logging"
+}
+
+
 // In this section you declare the dependencies for your production and test code
 dependencies {
 	
 	compile("org.springframework.boot:spring-boot-starter-web")
-	compile('org.slf4j:slf4j-api:1.7.21')
 	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
-
 	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 	compile("org.springframework.boot:spring-boot-starter-actuator")
 	compile("org.springframework.boot:spring-boot-devtools")
+	
+	//this is for logback library
+	compile('org.slf4j:slf4j-api:1.7.21')
+	//2. bridge logging from JCL to SLF4j
+	compile 'org.slf4j:jcl-over-slf4j:1.7.12'
+   //3. Logback
+   compile 'ch.qos.logback:logback-classic:1.2.1'
 
 }
