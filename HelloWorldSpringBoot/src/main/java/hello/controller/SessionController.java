@@ -1,4 +1,4 @@
-package hello;
+package hello.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +33,12 @@ public class SessionController {
     @RequestMapping("/session")
     public String session() {
         return "session";
+    }
+    
+    @RequestMapping("/article")
+    public String article() {
+    	
+        return "article";
     }
     
 }

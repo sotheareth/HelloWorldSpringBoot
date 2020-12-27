@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hello.dao.ArticlesDAO">
+	<resultMap type="ArticleDTO" id="ArticleDTO">
+		<result property="id" 	column="id" />
+		<result property="title" 	column="title"/>
+		<result property="author" 	column="author"/>
+	</resultMap>
+
+	<select id="getArticle" resultMap="ArticleDTO">
+		SELECT 
+			* 
+		FROM 
+			articles
+		WHERE
+			id = #{id} 
+	</select>
+	
+	<delete id="deleteArticle">
+		DELETE FROM	articles
+		WHERE
+			id = #{id} 
+	</delete>
+	
+	<insert id="insertArticle"  useGeneratedKeys="true"  keyProperty="id" keyColumn="id">
+		INSERT INTO articles
+		(title, author)
+		values(#{title}, #{author})		
+	</insert>
+	
+	<update id="updateArticle">
+		update articles
+		set title = #{title}, author = #{author}
+		where id = #{id}
+	</update>
+	
+</mapper>
